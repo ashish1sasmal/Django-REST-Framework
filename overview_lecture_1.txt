@@ -1,0 +1,22 @@
+Django Rest Framework
+--------------------------
+1. Django without rest api like body without hands and legs.
+2. easy and very small technology
+3. web api/ web services are same
+
+4. API -> Application programming interface
+    4.1. GUI is itself is an interface
+    4.2. Assume a mobile(android) app wants to communicate with django.
+    4.3. Api provides interface to access functionality of one Application 
+         from any end user also called [ inter-operability ]
+
+5. Web API
+    5.1. to access the services of web application.
+    5.2. End User --> Web API --> Web Application
+
+6. REST : Architecture
+    6.1. It defines several guidelines to develop web apis very easily.
+    6.2. The APIs which are based on REST principle called REST(ful) APIs.
+    6.3. Django REST Framework provides several tools to develop RESTful APIs.
+
+json --> JavaScript Object Notation

@@ -1,0 +1,21 @@
+Django Rest Framework
+--------------------------
+
+1. python contains inbuilt json module.
+    1.1. dumps() : convert python dictionary to json.
+    1.2. load() : convert json to python dictionary.
+    Note: JSON and python dictionary are not same.
+
+2. MIME Type (Muti-purpose Internet Mail Extension) --> content_type='application/json'
+
+3. Command line http client : curl, httpie
+    3.1. httpie : by default http response
+    -->  works only when server is running
+        CODE ::
+    -->  http://127.0.0.1:8000/api/json/ (from command line)
+
+    3.2. Send Http request from python script.
+    -->  
+    -->  
+    -->  
+         

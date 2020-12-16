@@ -1,0 +1,48 @@
+Django Rest Framework
+--------------------------
+
+1. Two web based APIs
+    1.1. SOAP (Simple object based protocol)
+        ->  XML Based message protocol
+        ->  By using RPC method calls we can consume SOAP based webservices.
+        ->  Heavy weight, only XML based, require more bandwidth, very complex to implement.
+        ->  parsing xml data is very slow.
+        ->  WSDL (web service description language) must be required
+        ->  Most Google services are SOAP based
+
+        ->  data is more secured.
+        ->  soap can support for multiple protocols. (htttp, ftp, smtp)
+        ->  no limit of data.
+
+
+    1.2. REST (REpresentaional State Transfer)
+        ->  Architectural style
+        ->  By using URL path we can consumer REST services
+        ->  each URL is representation of an object
+        ->  Json, light weight, less bandwidth required, very easy to implement, hight performance,
+            human understandable message format.
+        ->  No description language required.
+        ->  Most Yahoo services are REST based.
+
+        ->  Less secured
+        ->  Mostly http based
+        ->  limited amount of data
+
+2. HTTP Verbs
+    2.1. Get content using GET
+    2.2. Create new resource using POST
+    2.3. Update resource using PUT
+    2.4. To update patial resource using PATCH
+    2.5. Delete resource using DELETE
+
+    2.6. Others : OPTIONS, HEAD, CONNECT, TRACE, MOVE, LOCK, PROFIND etc.
+
+3. Database CRUD Operations vs HTTP verbs
+    C -> Create --> POST
+    R -> Retreive --> GET
+    U -> Update --> PUT/PATCH
+    D -> Delete --> DELETE
+
+4. Web Service Provider vs Web Service consumer
+
+
