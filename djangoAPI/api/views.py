@@ -39,3 +39,27 @@ def emp_data_json_view2(request):
     # json dumps() not needed coz it's included
     #MIME Type (Muti-purpose Internet Mail Extension)
     return JsonResponse(emp_data) 
+
+from django.views.generic import View
+from .mixins import HttpResponseMixin
+
+class JsonCBV(HttpResponseMixin,View):
+    def get(self,request,*args,**kwargs):
+        msg = {"msg":"This is from GET method."}
+        msg = json.dumps(msg)
+        return self.render_to_http(msg)
+    
+    def post(self,request,*args,**kwargs):
+        msg = {"msg":"This is from POST method."}
+        msg = json.dumps(msg)
+        return self.render_to_http(msg)
+    
+    def put(self,request,*args,**kwargs):
+        msg = {"msg":"This is from PUT method."}
+        msg = json.dumps(msg)
+        return self.render_to_http(msg)
+
+    def delete(self,request,*args,**kwargs):
+        msg = {"msg":"This is from DELETE method."}
+        msg = json.dumps(msg)
+        return self.render_to_http(msg)

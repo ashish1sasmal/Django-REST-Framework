@@ -22,4 +22,5 @@ urlpatterns = [
     path('api/',apiV.emp_data_view,name='withoutapi'),
     path('apijson/',apiV.emp_data_json_view),
     path('apijson2/',apiV.emp_data_json_view2),
+    path('apijson3/',apiV.JsonCBV.as_view())
 ]

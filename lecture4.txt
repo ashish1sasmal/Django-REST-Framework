@@ -1,0 +1,62 @@
+Django Rest Framework
+--------------------------
+
+1.  Common language : Http
+    Common Message Format : JSON/ XML
+
+2.  --> When POST request is encountered, CsrfViewMIddleware of django 
+        will check if Csrf token is present or not.
+    --> How to BY-pass csrf verification:
+        2.1. This can be done by commenting out the CsrfViewMIddleware in settings.py. (Not Recommended!)
+    --> *args vs **kwargs
+        *args : variable length arguments
+            --> you can pass any number of arguments.
+            --> it converts the arguments into tuple.
+
+            Example : 
+                def f1(*args):
+                    print(args)
+                
+                f1()
+                f1(10)
+                f1(10,20)
+
+                Output:
+                >>> (10, 20)
+                
+        **kwargs : variable length keyword arguments
+            --> you can pass any number of key-value arguments.
+            --> it converts the arguments into dictionary.
+
+            Example : 
+                def f2(**kwargs):
+                    print(kwargs)
+                
+                f1(name="Ashish", id=02, gf1="Luna",gf2="Hermione")
+
+                Output:
+                >>> {'name': 'Ashish', 'id': 2, 'gf1': 'Luna', 'gf2': 'Hermione'}
+
+3.  Mixins : Mixed-In
+    --> It is a independant class.
+    --> To provide functionality to child class but not to parent class (itself).
+    --> we won't create object for mixin.
+    --> Code-Reusability.
+    --> Like abstract class.
+    --> direct child class of object. (biggest advantage :)
+    --> it doesn't containg any instance variables.
+
+    Mixins                    
+    ----------------------                   
+    1. Parent class instantiation not possible.            
+    2. Parent class contains only instance methods but not instance variables.
+    3. Methods Useful for only child class.
+    4. parent class should be direct child class of object.
+
+    Mutiple Inheritance
+    -----------------------
+    1. Parent class instantiation possible.            
+    2. Parent class contains both instance methods and instance variables.
+    3. Methods Useful for both parent and  child class.
+    4. parent class can extend any other class also need not to be object class.
+    

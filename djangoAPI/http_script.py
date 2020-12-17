@@ -3,7 +3,7 @@ import requests
 import json
 
 BASE_URL = 'http://127.0.0.1:8000/'
-END_POINT = 'apijson'
+END_POINT = 'apijson3/'
 
 response = requests.get(BASE_URL+END_POINT)
 
