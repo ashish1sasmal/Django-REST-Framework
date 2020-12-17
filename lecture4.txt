@@ -53,10 +53,13 @@ Django Rest Framework
     3. Methods Useful for only child class.
     4. parent class should be direct child class of object.
 
+    example : Bachelor person. ;)
+
     Mutiple Inheritance
     -----------------------
     1. Parent class instantiation possible.            
     2. Parent class contains both instance methods and instance variables.
     3. Methods Useful for both parent and  child class.
     4. parent class can extend any other class also need not to be object class.
-    
+
+    example : married person :(
