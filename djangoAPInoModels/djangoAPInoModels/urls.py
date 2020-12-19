@@ -19,5 +19,6 @@ from app import views as appv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('details/<int:id>',appv.EmployeeDetailsCBV.as_view())
+    path('details/<int:id>',appv.EmployeeDetailsCBV.as_view()),
+    path('details/',appv.EmployeeListCBV.as_view())
 ]

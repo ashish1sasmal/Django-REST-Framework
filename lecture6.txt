@@ -1,0 +1,25 @@
+Django Rest Framework
+--------------------------
+
+1. Serialization : convert python object to json.
+    Possible ways : 
+        --> by using python inbuilt module json.
+            json.dumps()
+
+        --> by using django serialize() fxn.
+            from django.core.serializers import serialize
+            serialize('json',[data,])
+
+        --> by using rest_framework serializers
+    
+2. Retrieve all records
+    --> list contains dictionary objects.
+    --> To retreive only relevant data.
+        --> django inbuilt serialize fxn will always return all details.
+        To get rid of them we can remove them manually like 'model','pk' etc.
+
+3. Exception/Error Handing :
+    --> use try/except  to save you day.
+
+4. How to add status code to response?
+    --> return HttpResponse(json_data,content_type="application/json",status=status_code)
