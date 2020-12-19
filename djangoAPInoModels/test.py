@@ -2,7 +2,7 @@ import requests
 import json
 
 BASE_URL = "http://127.0.0.1:8000/"
-END_POINT = "details/"
+END_POINT = "api/"
 
 def get_resource(*args):
     resp = requests.get(BASE_URL+END_POINT+str(args[0]))
@@ -53,4 +53,50 @@ def delete(id):
     print(resp.status_code)
     print(resp.json())
 
-delete(6)
+def crud_get(id=None):
+    data={}
+    if id is not None:
+        data = {
+            "id":id
+        }
+    resp = requests.get(BASE_URL+END_POINT,data=json.dumps(data))
+    print(resp.status_code)
+    print(resp.json())
+
+def crud_post(id=None):
+    data ={
+        "enum":45,
+        "ename":"Remus Lupin",
+        "esal":500,
+        "eaddr":"Shreiking Shack"
+    }
+    json_data = json.dumps(data)
+
+    resp = requests.post(BASE_URL+END_POINT, data=json_data)
+    print(resp.status_code)
+    print(resp.json())
+
+def crud_put(id=None):
+    data ={
+        "id":id,
+        "esal":450,
+        "eaddr":"Shreiking Shack"
+    }
+    json_data = json.dumps(data)
+
+    resp = requests.put(BASE_URL+END_POINT, data=json_data)
+    print(resp.status_code)
+    print(resp.json())
+
+def crud_delete(id=None):
+    data ={}
+    if id is not None:
+        data = {
+        "id":id
+        }
+    json_data = json.dumps(data)
+
+    resp = requests.delete(BASE_URL+END_POINT, data=json_data)
+    print(resp.status_code)
+    print(resp.json())
+crud_put(9)

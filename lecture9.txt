@@ -1,0 +1,4 @@
+Django Rest Framework
+--------------------------
+
+1. Now we want to implement all CRUD operations using single end point. (Real time coding standard)

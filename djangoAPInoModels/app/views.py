@@ -80,12 +80,6 @@ class EmployeeDetailsCBV(HttpResponseMixin,SerializeMixin,View):
             json_data = json.dumps({"msg":"Unable to delete. Please try again."})
             return self.render_to_http(json_data,500)
 
-
-
-
-
-
-
 @method_decorator(csrf_exempt, name='dispatch')
 class EmployeeListCBV(HttpResponseMixin,SerializeMixin,View):
     def get(self,request,*args,**kwargs):
@@ -116,3 +110,105 @@ class EmployeeListCBV(HttpResponseMixin,SerializeMixin,View):
             if form.errors :
                 json_data = json.dumps(form.errors)
                 return self.render_to_http(json_data,400)
+
+@method_decorator(csrf_exempt, name='dispatch')
+class EmployeeCRUDCBV(HttpResponseMixin,SerializeMixin,View):
+    def get(self,request,*args,**kwargs):
+        data = request.body
+        valid_json =  is_json(data)
+        if not valid_json:
+            json_data = json.dumps({"msg":"Please Send valid json data"})
+            return self.render_to_http(json_data,400)
+
+        dict_data = json.loads(data)
+        id = dict_data.get('id',None)
+        if id is not None:
+            emp = get_object_by_id(id)
+            if emp is None:
+                json_data = json.dumps({"msg":"No match Found"})
+                status_code = 404
+                return self.render_to_http(json_data,status_code)
+
+            json_data = self.serialize([emp])
+            return self.render_to_http(json_data)
+
+        qs = Employee.objects.all()
+        json_data = self.serialize(qs)
+        return self.render_to_http(json_data)
+
+    def post(self,request,*args,**kwargs):
+        data = request.body
+        valid_json =  is_json(data)
+        if not valid_json:
+            json_data = json.dumps({"msg":"Please Send valid json data"})
+            return self.render_to_http(json_data,400)
+
+        dict_data = json.loads(data)
+        form = EmployeeForm(dict_data)
+        if form.is_valid():
+            form.save(commit=True)
+            json_data = json.dumps({"msg":"Resource Created successfully."})
+            return self.render_to_http(json_data)
+        else:
+            json_data = json.dumps(form.errors)
+            return self.render_to_http(json_data,400)
+
+    def put(self,request,*args,**kwargs):
+        data = request.body
+        valid_json =  is_json(data)
+        if not valid_json:
+            json_data = json.dumps({"msg":"Please Send valid json data"})
+            return self.render_to_http(json_data,400)
+
+        dict_data = json.loads(data)
+        id = dict_data.get('id',None)
+        if id is not None:
+            emp = get_object_by_id(id)
+            if emp is None:
+                json_data = json.dumps({"msg":"No match Found"})
+                status_code = 404
+                return self.render_to_http(json_data,status_code)
+
+            emp_json_data = self.serialize([emp])
+            emp_dict_data = json.loads(emp_json_data)[0]
+            print(emp_dict_data)
+            emp_dict_data.update(dict_data)
+            form = EmployeeForm(emp_dict_data,instance=emp)
+            if form.is_valid():
+                form.save(commit=True)
+                json_data = json.dumps({"msg":"Resource Updated successfully."})
+                return self.render_to_http(json_data)
+            else:
+                json_data = json.dumps(form.errors)
+                return self.render_to_http(json_data,400)
+        else:
+            json_data = json.dumps({"msg":"Please provide id."})
+            return self.render_to_http(json_data,400)
+
+    def delete(self,request,*args,**kwargs):
+        data = request.body
+        valid_json =  is_json(data)
+        if not valid_json:
+            json_data = json.dumps({"msg":"Please Send valid json data"})
+            return self.render_to_http(json_data,400)
+
+        dict_data = json.loads(data)
+        id = dict_data.get('id',None)
+        if id is not None:
+            emp = get_object_by_id(id)
+            if emp is None:
+                json_data = json.dumps({"msg":"No match Found"})
+                status_code = 404
+                return self.render_to_http(json_data,status_code)
+
+            status,empdata = emp.delete()
+            if status==1:
+                json_data = json.dumps({"msg":"Resource Deleted successfully."})
+                return self.render_to_http(json_data)
+            else:
+                json_data = json.dumps({"msg":"Some error occured. Please try again."})
+                status_code = 500
+                return self.render_to_http(json_data,status_code)
+        else:
+            json_data = json.dumps({"msg":"Please provide id."})
+            return self.render_to_http(json_data,400)

@@ -5,3 +5,6 @@ Django Rest Framework
     --> emp.delete() returns tuple of two values
           returns tuple 1. status 2. Deleted item
           1, {'app.Employee': 1})
+
+2. We have performed CRUD operations using two endpoints, but
+    most practical APIs use only one endpoint.
