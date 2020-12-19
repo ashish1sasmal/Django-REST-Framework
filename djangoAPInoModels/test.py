@@ -38,4 +38,19 @@ def createEmp():
     print(resp.status_code)
     print(resp.json())
 
-createEmp()
+def update(id):
+    new_emp = {
+        "esal":8990,
+        "eaddr":"Burrow"
+    }
+    resp = requests.put(BASE_URL+END_POINT+str(id),data=json.dumps(new_emp))
+    print(resp.status_code)
+    print(resp.json())
+
+
+def delete(id):
+    resp = requests.delete(BASE_URL+END_POINT+str(id))
+    print(resp.status_code)
+    print(resp.json())
+
+delete(6)

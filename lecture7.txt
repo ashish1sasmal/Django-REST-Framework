@@ -3,7 +3,7 @@ Django Rest Framework
 
 1. Is it possible to dump total database data to console in json format?
     -->   python3 manage.py dumpdata app.Employee
-    -->   to present beautifully 
+    -->   to present beautifully
             python3 manage.py dumpdata app.Employee --indent 4
             [
                 {
@@ -43,7 +43,7 @@ Django Rest Framework
     --> To save data in a file
         --> XML :
             python3 manage.py dumpdata app.Employee --format xml > emp.xml --indent 4
-        --> JSON : 
+        --> JSON :
             python3 manage.py dumpdata app.Employee --format json > emp.json --indent 4
 
 2. Another format is YAML (Yaml Ain't Markup Language)
@@ -60,7 +60,7 @@ Django Rest Framework
             @csrf_exempt
             def myview(request):
                 ...
-            
+
             So, now for this function csrf verification will not be done.
 
         --> 2. Class Level
@@ -75,7 +75,7 @@ Django Rest Framework
                     but if name='dispatch' this will work for all http methods
                      is which csrf verification needed.
 
-        --> Project Level (**Not Recommended**) 
+        --> Project Level (**Not Recommended**)
             --> Comment/delete 'django.middleware.csrf.CsrfViewMiddleware' from settings.py/MIDDLEWARE.
 
 

@@ -1,0 +1,7 @@
+Django Rest Framework
+--------------------------
+1. Update Records
+  -->   Delete:
+    --> emp.delete() returns tuple of two values
+          returns tuple 1. status 2. Deleted item
+          1, {'app.Employee': 1})
