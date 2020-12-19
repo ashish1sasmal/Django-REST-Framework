@@ -19,7 +19,7 @@ Django Rest Framework
         To get rid of them we can remove them manually like 'model','pk' etc.
 
 3. Exception/Error Handing :
-    --> use try/except  to save you day.
+    --> use try/except  to save your day.
 
 4. How to add status code to response?
     --> return HttpResponse(json_data,content_type="application/json",status=status_code)
