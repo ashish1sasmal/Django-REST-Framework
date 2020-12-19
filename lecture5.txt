@@ -1,0 +1,26 @@
+Django Rest Framework
+--------------------------
+
+1. Difference between makemigrations and migrate
+    makemigrations --> Generate SQL code
+    migrate --> execute the sql code and automatically databse table will be created.
+
+2. Performing CRUD operations by using webAPI without REST Framework.
+
+3. Performing Retreive operations:
+    --> get particular record based on particular matched id
+    --> get all records
+
+4. Whenever we send a request from client to server, server will procide response. It will provide status code.
+    This status code represent status of response.
+    Possible status Codes:
+        1XX     100-199     Informational   (e.g. don't close browser etc.)
+        2XX     200-299     Successful  
+        3XX     300-399     Re-directional  (e.g. redirect to another site. )
+        4XX     400-499     Client Error    (e.g. 404 Page not found)
+        5XX     500-599     Server Error    (e.g. Server down )
+
+5. Serialization : Converting python dict to json object. (one form to another form)
+    --> serializers : inbuilt django module
+    -->serialize() : convert queryset to json easily.
+        -->  json_data = serializers.serialize('json',queryset)
