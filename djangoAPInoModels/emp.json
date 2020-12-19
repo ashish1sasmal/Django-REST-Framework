@@ -1,0 +1,52 @@
+[
+{
+    "model": "app.employee",
+    "pk": 1,
+    "fields": {
+        "enum": 12,
+        "ename": "Ashish Sasmal",
+        "esal": 120000.0,
+        "eaddr": "New York"
+    }
+},
+{
+    "model": "app.employee",
+    "pk": 2,
+    "fields": {
+        "enum": 14,
+        "ename": "Luna Lovegood",
+        "esal": 100000.0,
+        "eaddr": "Leaky Cauldrons"
+    }
+},
+{
+    "model": "app.employee",
+    "pk": 3,
+    "fields": {
+        "enum": 15,
+        "ename": "Hermione Granger",
+        "esal": 120000.0,
+        "eaddr": "Knocturn Alley"
+    }
+},
+{
+    "model": "app.employee",
+    "pk": 4,
+    "fields": {
+        "enum": 15,
+        "ename": "Severus Snape",
+        "esal": 50000.0,
+        "eaddr": "Boggins Height"
+    }
+},
+{
+    "model": "app.employee",
+    "pk": 5,
+    "fields": {
+        "enum": 90,
+        "ename": "Albus Dumbledore",
+        "esal": 60000.0,
+        "eaddr": "Godrics Hollow"
+    }
+}
+]

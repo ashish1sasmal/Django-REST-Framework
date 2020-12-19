@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+    <object model="app.employee" pk="1">
+        <field name="enum" type="IntegerField">12</field>
+        <field name="ename" type="CharField">Ashish Sasmal</field>
+        <field name="esal" type="FloatField">120000.0</field>
+        <field name="eaddr" type="CharField">New York</field>
+    </object>
+    <object model="app.employee" pk="2">
+        <field name="enum" type="IntegerField">14</field>
+        <field name="ename" type="CharField">Luna Lovegood</field>
+        <field name="esal" type="FloatField">100000.0</field>
+        <field name="eaddr" type="CharField">Leaky Cauldrons</field>
+    </object>
+    <object model="app.employee" pk="3">
+        <field name="enum" type="IntegerField">15</field>
+        <field name="ename" type="CharField">Hermione Granger</field>
+        <field name="esal" type="FloatField">120000.0</field>
+        <field name="eaddr" type="CharField">Knocturn Alley</field>
+    </object>
+    <object model="app.employee" pk="4">
+        <field name="enum" type="IntegerField">15</field>
+        <field name="ename" type="CharField">Severus Snape</field>
+        <field name="esal" type="FloatField">50000.0</field>
+        <field name="eaddr" type="CharField">Boggins Height</field>
+    </object>
+    <object model="app.employee" pk="5">
+        <field name="enum" type="IntegerField">90</field>
+        <field name="ename" type="CharField">Albus Dumbledore</field>
+        <field name="esal" type="FloatField">60000.0</field>
+        <field name="eaddr" type="CharField">Godrics Hollow</field>
+    </object>
+</django-objects>

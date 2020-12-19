@@ -9,6 +9,13 @@ import json
 from django.core.serializers import serialize
 from .mixins import SerializeMixin,HttpResponseMixin
 
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+from .utils import is_json
+
+from .forms import EmployeeForm
+
 
 class EmployeeDetailsCBV(HttpResponseMixin,SerializeMixin,View):
     def get(self,request,*args,**kwargs):
@@ -30,6 +37,7 @@ class EmployeeDetailsCBV(HttpResponseMixin,SerializeMixin,View):
         return self.render_to_http(json_data,status_code)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class EmployeeListCBV(HttpResponseMixin,SerializeMixin,View):
     def get(self,request,*args,**kwargs):
         try:
@@ -41,3 +49,22 @@ class EmployeeListCBV(HttpResponseMixin,SerializeMixin,View):
             status_code = 404
 
         return self.render_to_http(json_data,status_code)
+    
+    def post(self,request,*args,**kwargs):
+        data = request.body
+        print(data)
+        valid_json = is_json(data)
+        if not valid_json:
+            json_data = json.dumps({"msg":"Please Send valid json data"})
+            return self.render_to_http(json_data,400)
+        else:
+            emp_data = json.loads(data)
+            form = EmployeeForm(emp_data)
+            if form.is_valid():
+                form.save(commit=True)
+                json_data = json.dumps({"msg":"Resource created successfully!"})
+                return self.render_to_http(json_data,200)
+            if form.errors :
+                json_data = json.dumps(form.errors)
+                return self.render_to_http(json_data,400)
+            
