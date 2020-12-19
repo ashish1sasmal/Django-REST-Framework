@@ -1,0 +1,91 @@
+Django Rest Framework
+--------------------------
+
+1. Is it possible to dump total database data to console in json format?
+    -->   python3 manage.py dumpdata app.Employee
+    -->   to present beautifully 
+            python3 manage.py dumpdata app.Employee --indent 4
+            [
+                {
+                    "model": "app.employee",
+                    "pk": 1,
+                    "fields": {
+                        "enum": 12,
+                        "ename": "Ashish Sasmal",
+                        "esal": 120000.0,
+                        "eaddr": "New York"
+                    }
+                },
+                {
+                    "model": "app.employee",
+                    "pk": 2,
+                    "fields": {
+                        "enum": 14,
+                        "ename": "Luna Lovegood",
+                        "esal": 100000.0,
+                        "eaddr": "Leaky Cauldrons"
+                    }
+                }]
+
+    --> we can ask explicitly for json using
+            python3 manage.py dumpdata app.Employee --format json --indent 4
+
+    --> To present database in XML format
+            python3 manage.py dumpdata app.Employee --format xml --indent 4
+
+            <object model="app.employee" pk="5">
+                <field name="enum" type="IntegerField">90</field>
+                <field name="ename" type="CharField">Albus Dumbledore</field>
+                <field name="esal" type="FloatField">60000.0</field>
+                <field name="eaddr" type="CharField">Godrics Hollow</field>
+            </object>
+
+    --> To save data in a file
+        --> XML :
+            python3 manage.py dumpdata app.Employee --format xml > emp.xml --indent 4
+        --> JSON : 
+            python3 manage.py dumpdata app.Employee --format json > emp.json --indent 4
+
+2. Another format is YAML (Yaml Ain't Markup Language)
+    --> Used in cloud platform.
+
+3. Create Record
+    --> POST request
+        resp = requests.POST(BASE_URL+END_POINT, data=json_data)
+    --> whenever post request is made ,Django CSRFTokenMiddleware will first check for csrf_token.
+    --> How to by-pass csrf verification?
+        --> 1. Method Level:
+            --> from django.decorators.csrf import csrf_exempt
+
+            @csrf_exempt
+            def myview(request):
+                ...
+            
+            So, now for this function csrf verification will not be done.
+
+        --> 2. Class Level
+            --> from django.views.decorators.csrf import csrf_exempt
+                from django.utils.decorators import method_decorator
+
+                @method_decorator(csrf_exempt, name='dispatch')
+                class EmployeeCBV(View):
+                    ....
+
+                --> If name='POST', this will work for onnly post methods,
+                    but if name='dispatch' this will work for all http methods
+                     is which csrf verification needed.
+
+        --> Project Level (**Not Recommended**) 
+            --> Comment/delete 'django.middleware.csrf.CsrfViewMiddleware' from settings.py/MIDDLEWARE.
+
+
+4. How to check is user is sending json data or not?
+    -->
+        def is_json(data):
+            try :
+                dict_data = json.loads(data)
+                return True
+            except:
+                return False
+
+5. Records can be made using django inbuilt forms.
