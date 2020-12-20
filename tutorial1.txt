@@ -1,0 +1,72 @@
+Django Rest Framework
+--------------------------
+
+1.    Provide a way of serializing
+      and deserializing the snippet instances into representations such as json. We can do this by
+      declaring serializers that work very similar to Django's forms.
+
+2.    The first part of the serializer class defines the fields that get serialized/deserialized.
+      The create() and update() methods define how fully fledged instances are created or modified
+      when calling serializer.save()
+
+3.    A serializer class is very similar to a Django Form class, and includes similar validation flags
+      on the various fields, such as required, max_length and default.
+
+4.     To finalize the serialization process we render the data into json
+        >>> content = JSONRenderer().render(seri.data)
+        >>> content
+        b'{"id":2,"name":"Luna","rollno":2,"marks":98.0,"branch":"Transfig"}'
+
+5.      Deserialization is similar. First we parse a stream into Python native datatypes...
+          import io
+
+          stream = io.BytesIO(content)
+          data = JSONParser().parse(stream)
+
+6.      We can also serialize querysets instead of model instances.
+        To do so we simply add a many=True flag to the serializer arguments.
+
+        >>> seri3 = StudentSerializer(Student.objects.all(),many=True)
+        >>> seri3.data
+        [OrderedDict([('id', 1), ('name', 'Snape'), ('rollno', 1), ('marks', 90.0), ('branch', 'Potions')]), OrderedDict([('id', 2), ('name', 'Luna'), ('rollno', 2), ('marks', 98.0), ........
+
+7.      How to represent a serializer class?
+
+              >>> from app.serializers import StudentSerializer2
+              >>> seri = StudentSerializer2()
+              >>> print(repr(seri))
+              StudentSerializer2():
+              name = CharField(max_length=30)
+              rollno = IntegerField()
+              marks = FloatField()
+              branch = CharField(max_length=10)
+
+8.       ModelSerializer classes don't do anything particularly magical, they are simply a shortcut for
+          creating serializer classes:
+
+          -->    An automatically determined set of fields.
+          -->    Simple default implementations for the create() and update() methods.
+
+9.
+        -->   Convert JSON to python dict.
+        -->   Pass the dict to Serialize.
+        -->   save the serialize object.
+
+        Example :
+          >>> dict_data = json.loads(json_data)
+          >>> dict_data
+          {'rollno': 10, 'name': 'Albus', 'marks': 100.0, 'branch': 'Alchemy'}
+          >>> type(dict_data)
+          <class 'dict'>
+          >>> seri = StudentSerializer2(data=dict_data)
+          >>> seri.is_valid()
+          True
+          >>> seri.validated_data
+          OrderedDict([('name', 'Albus'), ('rollno', 10), ('marks', 100.0), ('branch', 'Alchemy')])
+          >>> seri.save()
+          <Student: Albus_10>
+
+10.    For partial updation you have to pass partial=True inside Serializer class.
+        seri = StudentSerializer2(std,data=dict_data,partial=True)
+
+11.     requests.put() doesn't work with View, it works in APIView

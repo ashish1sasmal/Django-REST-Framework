@@ -1,0 +1,33 @@
+REST API Session -
+
+1 Rest API Introduction 	
+2 Rest API terminology
+3 API Development without rest frame work
+4 Mixins and Multiple Inheritance
+5 CRUD Operations without Rest Framework
+6 Serialization
+7 API Development GET and POST Methods
+8 API Development UPDATE and DELETE Operations
+9 API Development with Single End Point Part-1
+10 API Development with Single End Point Part-12
+11 DRF Introduction
+12 Serializers
+13 Validations by using serializers
+14 ModelSerializers
+15 Django REST Framework Views
+16 APIViews with Models ListAPIView,CreateAPIView
+17 APIViews with Models Retrieve, Create and Destroy APIView classes
+18 APIViews with Models List,Create,Retrieve,Update and DestroyModelMixins
+19 ModelViewSet Demo application and testing by POSTMAN
+20 Authentication and Authorization Introduction, TokenAuthentication
+21 Authentication and Authorization Testing of Various Permission classes
+22 Authentication and Authorization Custom Permission Class Development and Testing
+23 Authentication and Authorization JWT Authentication-Access,Refresh,Verify Token
+24 Authentication and Authorization Testing of JWT Authentication
+25 Authentication and Authorization Implementing Custom Authentication
+26 DRF-PaginationPageNumberPagination,LimitOffsetPagination,CursorPagination
+27 DRF-Filtering Searching,Filetering and Ordering
+28 DRF-Nested Serializers
+29 Authentication and Authorization Basic and Session Authentication
+30 Consuming 3rd party apis and developing api for existing django application
+31 API Testing By using swagger REST API Session - 1 Rest API Introduction

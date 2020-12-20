@@ -47,9 +47,9 @@ def crud_delete(id=None):
         "id":id
         }
     json_data = json.dumps(data)
-
+    
     resp = requests.delete(BASE_URL+END_POINT, data=json_data)
     print(resp.status_code)
     print(resp.json())
 
-crud_put(4)
+crud_get()
