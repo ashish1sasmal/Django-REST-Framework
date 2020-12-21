@@ -2,7 +2,7 @@ import requests
 import json
 
 BASE_URL = "http://127.0.0.1:8000/"
-ENDPOINT = "api/"
+ENDPOINT = "api2/"
 
 def update(id):
     json_data = json.dumps({"id":id,"name":"Bellatrix"})
@@ -16,6 +16,17 @@ def update(id):
 
 def get():
     resp = requests.get(BASE_URL+ENDPOINT)
+    print(resp.status_code)
     print(resp.json())
 
-update(10)
+def delete():
+    resp = requests.delete(BASE_URL+ENDPOINT+str(5))
+    print(resp.status_code)
+    print(resp.json())
+
+def update():
+    resp = requests.put(BASE_URL+ENDPOINT+str(5), data=json.dumps({"name":"Tonks"}))
+    print(resp.status_code)
+    print(resp.json())
+
+get()

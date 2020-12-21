@@ -70,3 +70,8 @@ Django Rest Framework
         seri = StudentSerializer2(std,data=dict_data,partial=True)
 
 11.     requests.put() doesn't work with View, it works in APIView
+
+12.     any additional parameter should be added between request and *args in class based views.
+        example :
+            def get(self,request, format = None, *args, **kwargs):
+                ...

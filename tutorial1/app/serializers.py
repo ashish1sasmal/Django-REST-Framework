@@ -1,6 +1,14 @@
 from .models import Student
 
 from rest_framework import serializers
+from django.contrib.auth.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+    students = serializers.PrimaryKeyRelatedField(many=True, queryset = Student.objects.all())
+    # user = serializers.ReadOnlyField(source='user.username')
+    class Meta:
+        model = User
+        fields = ('id','username','students')
 
 
 class StudentSerializer(serializers.Serializer):
@@ -23,6 +31,10 @@ class StudentSerializer(serializers.Serializer):
         return inst
 
 class StudentSerializer2(serializers.ModelSerializer):
+    def clean_rollno(self):
+        marks = self.cleaned_data['marks']
+        if marks<33:
+            raise Vaili
     class Meta:
         model = Student
         fields = ('id','name','rollno','marks','branch')
