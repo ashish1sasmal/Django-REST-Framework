@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
     students = serializers.PrimaryKeyRelatedField(many=True, queryset = Student.objects.all())
-    # user = serializers.ReadOnlyField(source='user.username')
+    user = serializers.ReadOnlyField(source='user.username')
     class Meta:
         model = User
         fields = ('id','username','students')
